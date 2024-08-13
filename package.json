@@ -1,0 +1,21 @@
+{
+  "name": "@hoah2333/koishi-plugin-forward",
+  "description": "提供 Discord 与 Onebot 之间转发的服务",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {},
+  "keywords": [
+    "chatbot",
+    "koishi",
+    "plugin"
+  ],
+  "peerDependencies": {
+    "koishi": "4.17.11"
+  }
+}
