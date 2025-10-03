@@ -1,7 +1,7 @@
 {
   "name": "@hoah2333/koishi-plugin-forward",
   "description": "提供 Discord 与 Onebot 之间转发的服务",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -23,8 +23,11 @@
   "peerDependencies": {
     "koishi": "^4.18.7"
   },
+  "dependencies": {
+    "@satorijs/element": "^3.1.8"
+  },
   "devDependencies": {
-    "@satorijs/adapter-discord": "^4.5.7",
-    "koishi-plugin-adapter-onebot": "^6.6.2"
+    "@satorijs/adapter-discord": "^4.5.10",
+    "koishi-plugin-adapter-onebot": "^6.8.0"
   }
 }
