@@ -316,7 +316,7 @@ export function apply(ctx: Context, config: Configs) {
           return <template>[语音]</template>;
         }
       },
-      mface: (attrs: Record<string, string>): h => <image src={attrs.url} />,
+      mface: (attrs: Record<string, string>): h => <img src={attrs.url} type="image/webp" />,
       json: (attrs: Record<string, string>): h => {
         const data: Record<string, unknown> = JSON.parse(attrs.data);
         if (data.app === "com.tencent.miniapp_01") {
@@ -338,7 +338,9 @@ export function apply(ctx: Context, config: Configs) {
       img: async (attrs: Record<string, string>): Promise<h> => {
         try {
           const res = await ctx.http(attrs.src, { responseType: "arraybuffer" });
-          return <image src={Buffer.from(res.data)} type={attrs.type} />;
+          const base64: string = Buffer.from(res.data).toString("base64");
+
+          return <img src={`data:${attrs.type};base64,${base64}`} type={attrs.type} />;
         } catch (error) {
           logger.error(error);
           return <template>{attrs.content}</template>;
@@ -350,7 +352,9 @@ export function apply(ctx: Context, config: Configs) {
       sticker: async (attrs: Record<string, string>, children: h[]): Promise<h> => {
         try {
           const res = await ctx.http(children[0].attrs.src, { responseType: "arraybuffer" });
-          return <image src={Buffer.from(res.data)} type="image/webp" />;
+          const base64: string = Buffer.from(res.data).toString("base64");
+
+          return <img src={`data:image/webp;base64,${base64}`} type="image/webp" />;
         } catch (error) {
           logger.error(error);
           return <template>[贴纸 - {attrs.name}]</template>;
@@ -371,7 +375,9 @@ export function apply(ctx: Context, config: Configs) {
       face: async (attrs: Record<string, string>, children: h[]): Promise<h> => {
         try {
           const res = await ctx.http(children[0].attrs.src, { responseType: "arraybuffer" });
-          return <image src={Buffer.from(res.data)} type="image/webp" />;
+          const base64: string = Buffer.from(res.data).toString("base64");
+
+          return <img src={`data:image/webp;base64,${base64}`} type="image/webp" />;
         } catch (error) {
           logger.error(error);
           return <template>[表情 - {attrs.name}]</template>;

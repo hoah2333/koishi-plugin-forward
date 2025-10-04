@@ -1,7 +1,7 @@
 {
   "name": "@hoah2333/koishi-plugin-forward",
   "description": "提供 Discord 与 Onebot 之间转发的服务",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
